@@ -14,3 +14,18 @@ You can deploy this project on Cloudflare Pages or Cloudflare Workers.
 Run the following command for development:
 
 `zola serve --extra-watch-path settings`
+
+You can use Lightning CSS to minify, bundle, and target browsers (last 2 versions).
+
+```json
+{
+  "devDependencies": {
+    "lightningcss-cli": "^1.30.2"
+  },
+  "scripts": {
+      "build": "lightningcss --minify --bundle --targets \">= 0.25%\" static/css/screen.css -o public/css/screen.css"
+  }
+}
+```
+`zola build && npm run build`
+
