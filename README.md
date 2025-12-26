@@ -29,3 +29,8 @@ You can use Lightning CSS to minify, bundle, and target browsers (last 2 version
 ```
 `zola build && npm run build`
 
+You can customize the website appearance through the Design & Branding menu in Sveltia CMS.
+
+![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/undefined%20(4).png)
+![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/undefined%20(5).png)
+![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/ResizedImage_2025-12-27_02-50-51_2514.png)
