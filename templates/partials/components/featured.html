@@ -4,7 +4,7 @@
             <div class="gh-featured-inner gh-inner">
                 <h2 class="gh-featured-title">Featured</h2>
                 <div class="gh-featured-feed">
-                    {% for page in posts.pages | filter(attribute="extra.featured", value=true) | slice(start=0, end=5) %}
+                    {% for page in posts.pages | filter(attribute="extra.featured", value=true) | slice(start=0, end=6) %}
                         {{ pc::post_card(posts=page, imageSizes="80px") }}
                     {% endfor %}
                 </div>
