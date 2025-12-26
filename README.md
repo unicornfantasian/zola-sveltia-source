@@ -34,3 +34,7 @@ You can customize the website appearance through the Design & Branding menu in S
 ![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/undefined%20(4).png)
 ![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/undefined%20(5).png)
 ![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/ResizedImage_2025-12-27_02-50-51_2514.png)
+
+Copyright (c) 2013-2025 Ghost Foundation
+- Github: [TryGhost/Source](https://github.com/TryGhost/Source)
+- License: [MIT License](https://github.com/TryGhost/Source/blob/main/LICENSE)
