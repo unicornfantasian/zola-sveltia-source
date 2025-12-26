@@ -10,7 +10,7 @@ default_language = "en"
 title = "Zola Sveltia Source"
 
 # Site description
-description = "Thoughts, stories and ideas."
+description = "Thoughts, stories and JAMstack"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
