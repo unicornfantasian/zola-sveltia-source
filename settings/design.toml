@@ -1,13 +1,12 @@
 site_accent_color = "#e20a39"
-cover_image = "/uploads/design/1000070462.jpg"
 title_font = "Modern sans-serif"
 body_font = "Elegant serif"
 navigation_layout = "Logo in the middle"
-site_background_color = "#ffffff"
+site_background_color = "#000000"
 header_and_footer_color = "Background color"
-header_style = "Highlight"
+header_style = "Magazine"
 show_featured_posts = true
-post_feed_style = "List"
+post_feed_style = "Grid"
 show_images_in_feed = true
 show_publication_info_sidebar = "true"
-
+cover_image = "/uploads/design/1000070462.jpg"
