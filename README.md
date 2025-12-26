@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/unicornfantasian/zola-sveltia-source/refs/heads/main/Untitled%20Design_1-42.png)
 
-Zola Sveltia Source is a Zola SSG project that uses Sveltia as its CMS and a ported version of the default Ghost CMS theme adapted for Zola.
+Zola Sveltia Source is a Zola SSG project that uses Sveltia as its CMS and a ported version of the default Ghost CMS theme adapted for Zola & Sveltia.
 
 ## Requirements
 
