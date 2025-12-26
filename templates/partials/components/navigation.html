@@ -1,0 +1,39 @@
+<header id="gh-navigation" class="gh-navigation is-{% if design.navigation_layout == "Logo on the left" %}left-logo{% elif design.navigation_layout == "Stacked" %}stacked{% else %}middle-logo{% endif %}{% if design.header_and_footer_color == "Accent color" %} has-accent-color{% endif %} gh-outer">
+    <div class="gh-navigation-inner gh-inner">
+
+        <div class="gh-navigation-brand">
+            <a class="gh-navigation-logo is-title" href="{{ config.base_url | safe }}">
+                {% if design.logo %}
+                    <img src="{{ design.logo | safe }}" alt="{{ config.title }}">
+                {% else %}
+                    {{ config.title }}
+                {% endif %}
+            </a>
+            {# include "partials/search-toggle.html" #}
+            <button class="gh-burger gh-icon-button" aria-label="Menu">
+                {% include "partials/icons/burger.html" %}
+                {% include "partials/icons/close.html" %}
+            </button>
+        </div>
+
+        <nav class="gh-navigation-menu">
+            {% if config.extra.navigation %}
+            {{ nav::navigation(data=config.extra.navigation) }}
+            {% endif %}
+            
+                {# if design.navigation_layout == "Stacked" %}
+                    {% include "partials/search-toggle.html" %}
+                {% endif #}
+            
+        </nav>
+
+        <div class="gh-navigation-actions">
+            
+                {# if design.navigation_layout != "Stacked" %}
+                    {% include "partials/search-toggle.html" %}
+                {% endif #}
+            
+        </div>
+
+    </div>
+</header>

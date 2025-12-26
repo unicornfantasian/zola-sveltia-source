@@ -1,0 +1,14 @@
+{% macro navigation(data, type="") %}
+<ul class="nav">
+    {% for item in data %}
+    <li class="nav-{{ item.label | slugify }}">
+        {% if item.url is matching("^([^:/?#]+)://") %}
+        {% set url = item.url %}
+        {% else %}
+        {% set url = get_url(path=item.url, trailing_slash=true) %}
+        {% endif %}
+        <a href="{{ url | safe }}">{{ item.label }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endmacro navigation %}

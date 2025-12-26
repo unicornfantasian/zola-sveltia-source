@@ -1,0 +1,8 @@
+name = "zola-sveltia-source"
+compatibility_date = "2025-07-01"
+workers_dev = true
+preview_urls = false
+
+[assets]
+directory = "./public/"
+not_found_handling = "404-page"

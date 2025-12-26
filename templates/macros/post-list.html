@@ -1,0 +1,112 @@
+{% macro post_list(posts, feed="", showTitle=false) %}
+{% set design = load_data(path="settings/design.toml") %}
+{#
+    Parameters:
+    * feed (index, home, archive, recent)
+    * postFeedStyle (list, grid)
+    * showTitle (true, false)
+    * showSidebar (true, false)
+#}
+
+<section class="gh-container is-{% if design.post_feed_style == "List" %}list{% else %}grid{% endif %}{% if design.show_publication_info_sidebar %} has-sidebar{% endif %}{% if not design.show_images_in_feed %} no-image{% endif %} gh-outer">
+    <div class="gh-container-inner gh-inner">
+        
+        {% if showTitle %}
+            <h2 class="gh-container-title">
+                Latest
+            </h2>
+        {% endif %}
+
+        <main class="gh-main">
+            <div class="gh-feed">
+
+                {# Homepage #}
+                {% if feed == "home" %}
+                    {% if design.header_style == "Highlight" %}
+                        {% if design.show_featured_posts %}
+                            {% if posts.pages | length >= 4 %}
+                                
+                                    {% for page in posts.pages | slice(start=4, end=16) %}
+                                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                    {% endfor %}
+                                
+                            {% endif %}
+                        {% else %}
+                            {% if posts.pages | length >= 10 %}
+                                
+                                    {% for page in posts.pages | slice(start=10, end=22) %}
+                                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                    {% endfor %}
+                                
+                            {% endif %}
+                        {% endif %}
+                    {% elif design.header_style == "Magazine" %}
+                        {% if posts.pages | length >= 7 %}
+                            
+                                {% for page in posts.pages | slice(start=7, end=19) %}
+                                    {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                {% endfor %}
+                            
+                        {% endif %}
+                    {% else %}
+                        
+                            {% for page in posts.pages | slice(end=12) %}
+                                {{ pc::post_card(posts=page, lazyLoad=true) }}
+                            {% endfor %}
+                        
+                    {% endif %}
+                {% endif %}
+
+                {# All posts #}
+                {% if feed == "index" %}
+                    
+                    {% for page in paginator.pages %}
+                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                    {% endfor %}
+                {% endif %}
+
+                {# {{!-- Tag and author pages --}}
+                {{#match feed "archive"}}
+                    {{#foreach posts}}
+                        {{> "post-card" lazyLoad=true}}
+                    {{/foreach}}
+                {{/match}} #}
+
+            </div>
+
+            {% if feed == "home" %}
+                <div class="gh-more is-title">
+                    <a href="{{ config.base_url | safe }}/posts/">See all {% include "partials/icons/arrow.html" %}</a>
+                </div>
+                {% else %}
+                {% include "partials/pagination.html" %}
+            {% endif %}
+        </main>
+
+        {% if design.show_publication_info_sidebar  %}
+            <aside class="gh-sidebar">
+                <div class="gh-sidebar-inner">
+                    <section class="gh-about">
+                        {% if design.icon %}
+                            <img class="gh-about-icon" src="{{ design.icon | safe }}" alt="{{ config.title }}" loading="lazy">
+                        {% endif %}
+                        <h3 class="gh-about-title is-title">{{ config.title }}</h3>
+                        
+                            <p class="gh-about-description is-body">{{ config.description }}</p>
+                        
+                        
+                    </section>
+                    {# {{#if @site.recommendations_enabled}}
+                        <section class="gh-recommendations">
+                            <h4 class="gh-sidebar-title">Recommendations</h4>
+                            {{recommendations}}
+                            <button data-portal="recommendations">See all {{> "icons/arrow"}}</button>
+                        </section>
+                    {{/if}} #}
+                </div>
+            </aside>
+        {% endif %}
+
+    </div>
+</section>
+{% endmacro post_list %}

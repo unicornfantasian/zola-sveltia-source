@@ -1,0 +1,23 @@
+{% if page.extra.feature_image %}
+{% set src = page.colocated_path ~ page.extra.feature_image %}
+{% set img_s = resize_image(path=src, width=320, op="fit_width", format="webp", quality=80) %}
+{% set img_m = resize_image(path=src, width=600, op="fit_width", format="webp", quality=80) %}
+{% set img_l = resize_image(path=src, width=960, op="fit_width", format="webp", quality=80) %}
+{% set img_xl = resize_image(path=src, width=1200, op="fit_width", format="webp", quality=80) %}
+{% set img_xxl = resize_image(path=src, width=2000, op="fit_width", format="webp", quality=80) %}
+    <figure class="gh-article-image">
+        <img
+            srcset="{{ img_s.url | safe }} 320w,
+                    {{ img_m.url | safe }} 600w,
+                    {{ img_l.url | safe }} 960w,
+                    {{ img_xl.url | safe }} 1200w,
+                    {{ img_xxl.url | safe }} 2000w"
+            sizes="(max-width: 1200px) 100vw, 1120px"
+            src="{{ img_xl.url | safe }}"
+            alt="{{ page.title }}"
+        >
+        {% if page.extra.feature_image_caption %}
+            <figcaption>{{ page.extra.feature_image_caption }}</figcaption>
+        {% endif %}
+    </figure>
+{% endif %}

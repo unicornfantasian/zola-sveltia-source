@@ -1,0 +1,58 @@
+{% macro post_card(posts, imageSizes="", lazyLoad=false) %}
+{% set design = load_data(path="settings/design.toml") %}
+{% set src = posts.colocated_path ~ posts.extra.feature_image %}
+{% set img_xs = resize_image(path=src, width=160, op="fit_width", format="webp", quality=80) %}
+{% set img_s = resize_image(path=src, width=320, op="fit_width", format="webp", quality=80) %}
+{% set img_m = resize_image(path=src, width=600, op="fit_width", format="webp", quality=80) %}
+{% set img_l = resize_image(path=src, width=960, op="fit_width", format="webp", quality=80) %}
+{% set img_xl = resize_image(path=src, width=1200, op="fit_width", format="webp", quality=80) %}
+{% set img_xxl = resize_image(path=src, width=2000, op="fit_width", format="webp", quality=80) %}
+
+<article class="gh-card post {% if posts.extra.featured %}featured{% endif %}{% if not design.show_images_in_feed %} no-image{% endif %}">
+    <a class="gh-card-link" href="{{ posts.permalink | safe }}">
+        {% if posts.extra.feature_image %}
+            <figure class="gh-card-image">
+                <img
+                    srcset="{{ img_xs.url | safe }} 160w,
+                            {{ img_s.url | safe }} 320w,
+                            {{ img_m.url | safe }} 600w,
+                            {{ img_l.url | safe }} 960w,
+                            {{ img_xl.url | safe }} 1200w,
+                            {{ img_xxl.url | safe }} 2000w"
+                    sizes="{% if imageSizes %}{{ imageSizes }}{% else %}320px{% endif %}"
+                    src="{{ img_m.url | safe }}"
+                    alt="{{ posts.title }}"
+                    {%if lazyLoad %}loading="lazy"{% endif %}
+                >
+            </figure>
+        {% endif %}
+        <div class="gh-card-wrapper">
+            {# {{#if primary_tag}}
+                <p class="gh-card-tag">{{primary_tag.name}}</p>
+            {{/if}} #}
+            <h3 class="gh-card-title is-title">{{ posts.title }}</h3>
+            
+                <p class="gh-card-excerpt is-body">{{ posts.description }}</p>
+            
+            {# {{#unless custom_excerpt}}
+                {{#if excerpt}}
+                    <p class="gh-card-excerpt is-body">{{excerpt}}</p>
+                {{/if}}
+            {{/unless}} #}
+            <footer class="gh-card-meta">
+                {# {{#unless access}}
+                    {{^has visibility="public"}}
+                        {{> "icons/lock"}}
+                    {{/has}}
+                {{/unless}} #}<!--
+             -->{# {{#if @custom.show_author}}
+                    <span class="gh-card-author">By {{#foreach authors}}{{#if @first}}{{name}}{{else}}, {{name}}{{/if}}{{/foreach}}</span>
+                {{/if}} #}
+                {# {{#if @custom.show_publish_date}} #}
+                    <time class="gh-card-date" datetime="{{ posts.date | date(format="%Y-%m-%d") }}">{{ posts.date | date(format="%B %e, %Y") }}</time>
+                {# {{/if}} #}<!--
+         --></footer>
+        </div>
+    </a>
+</article>
+{% endmacro post_card %}

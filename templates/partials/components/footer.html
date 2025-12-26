@@ -1,0 +1,24 @@
+<footer class="gh-footer{% if design.header_and_footer_color == "Accent color" %} has-accent-color{% endif %} gh-outer">
+    <div class="gh-footer-inner gh-inner">
+
+        <div class="gh-footer-bar">
+            <span class="gh-footer-logo is-title">
+                {% if design.logo %}
+                    <img src="{{ design.logo | safe }}" alt="{{ config.title }}">
+                {% else %}
+                    {{ config.title }}
+                {% endif %}
+            </span>
+            <nav class="gh-footer-menu">
+                {% if config.extra.navigation_secondary %}
+            {{ nav::navigation(data=config.extra.navigation_secondary, type="secondary") }}
+            {% endif %}
+            </nav>
+            <div class="gh-footer-copyright">
+                Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+
+        
+    </div>
+</footer>

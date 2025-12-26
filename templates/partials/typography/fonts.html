@@ -1,0 +1,15 @@
+{# Sans-serif font is always loaded, because it's the default font for some part of the theme regardless of the settings #}
+{% include "partials/typography/sans.html" %}
+
+{% if design.title_font == "Modern sans-serif" %}
+    {% if design.body_font == "Elegant serif" %}
+        {% include "partials/typography/serif.html" %}
+    {% endif %}
+{% elif design.title_font == "Elegant serif" %}
+    {% include "partials/typography/serif.html" %}
+{% else %}
+    {% include "partials/typography/mono.html" %}
+    {% if design.body_font == "Elegant serif" %}
+        {% include "partials/typography/serif.html" %}
+    {% endif %}
+{% endif %}

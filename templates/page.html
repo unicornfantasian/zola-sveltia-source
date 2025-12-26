@@ -1,0 +1,29 @@
+{% extends "default.html" %}
+{# The tag above means: insert everything in this file into the body of the default.hbs template #}
+
+{% block title %}{{ page.title }}{% endblock title %}
+{% block body_class %}page-template page-{{ page.slug | lower }}{% endblock body_class %}
+
+{% block body %}
+
+<main class="gh-main">
+    <article class="gh-article page {% if page.extra.feature_image %}{% else %}no-image{% endif %}">
+
+        {% if page.extra.show_title_and_feature_image %}
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title is-title">{{ page.title }}</h1>
+                
+                    <p class="gh-article-excerpt is-body">{{ page.description }}</p>
+                
+                {% include "partials/feature-image.html" %}
+            </header>
+        {% endif %}
+
+        <section class="gh-content gh-canvas is-body">
+            {{ page.content | safe }}
+        </section>
+
+    </article>
+</main>
+
+{% endblock body %}

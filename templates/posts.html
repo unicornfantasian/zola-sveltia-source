@@ -1,0 +1,13 @@
+{% extends "default.html" %}
+{# The tag above means: insert everything in this file into the body of the default.hbs template #}
+
+{% block title %}{{ config.title }}{% endblock title %}
+{% block body_class %}paged{% endblock body_class %}
+
+{% block body %}
+
+<main class="gh-main">
+    {{ pl::post_list(posts=posts, feed="index", showTitle=true) }}
+</main>
+
+{% endblock body %}

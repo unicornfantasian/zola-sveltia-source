@@ -1,0 +1,43 @@
+<style>
+.pagination {
+    display: none;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-top: 8vmin;
+}
+
+.pagination {
+    display: grid;
+}
+
+.pagination a {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.pagination .page-number {
+    grid-column-start: 2;
+    color: var(--color-secondary-text);
+}
+
+.pagination .older-posts {
+    grid-column-start: 3;
+    text-align: right;
+}
+
+@media (max-width: 767px) {
+    .pagination .page-number {
+        display: none;
+    }
+}
+</style>    
+
+<nav class="pagination">
+    {% if paginator.previous %}
+        <a class="newer-posts" href="{{ paginator.previous | safe }}"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+    {% endif %}
+    <span class="page-number">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+        <a class="older-posts" href="{{ paginator.next | safe }}">Older Posts <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
+</nav>

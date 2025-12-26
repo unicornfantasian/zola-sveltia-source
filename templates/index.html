@@ -1,0 +1,20 @@
+{% extends "default.html" %}
+{# The tag above means: insert everything in this file into the body of the default.hbs template #}
+
+{% block title %}{{ config.title }}{% endblock title %}
+{% block body_class %}home-template{% endblock body_class %}
+
+
+{% block body %}
+
+{% include "partials/components/header.html" %}
+
+{% if design.header_style != "Highlight" %}
+    {% include "partials/components/featured.html" %}
+{% endif %}
+
+{# {{> "components/cta"}} #}
+
+{{ pl::post_list(posts=posts, feed="home", showTitle=true) }}
+
+{% endblock body %}

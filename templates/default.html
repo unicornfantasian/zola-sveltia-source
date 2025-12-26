@@ -1,0 +1,80 @@
+{% import "macros/navigation.html" as nav %}
+{% import "macros/post-card.html" as pc %}
+{% import "macros/post-list.html" as pl %}
+{% set design = load_data(path="settings/design.toml") %} {# zola serve --extra-watch-path settings #}
+{% set posts = get_section(path="posts/_index.md") %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+
+    {# Basic meta - advanced meta is output with {{ghost_head}} below #}
+    <title>{% block title %}{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Preload main styles and scripts for better performance #}
+    <link rel="preload" as="style" href="{{ get_url(path="css/screen.css", cachebust=true) }}">
+    <link rel="preload" as="script" href="{{ get_url(path="js/source.js", cachebust=true) }}">
+    
+    {# Fonts are preloaded and defined in the default template to avoid layout shift #}
+    {% include "partials/typography/fonts.html" %}
+
+    {# Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically #}
+    <link rel="stylesheet" type="text/css" href="{{ get_url(path="css/screen.css", cachebust=true) }}">
+
+    {# Custom background color #}
+    <style>
+        :root {
+            --background-color: {{ design.site_background_color }};
+            --ghost-accent-color: {{ design.site_accent_color }};
+        }
+    </style>
+
+    <script>
+        /* The script for calculating the color contrast has been taken from
+        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
+        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
+        accentColor = accentColor.trim().slice(1);
+
+        if (accentColor.length === 3) {
+            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
+        }
+
+        var r = parseInt(accentColor.substr(0, 2), 16);
+        var g = parseInt(accentColor.substr(2, 2), 16);
+        var b = parseInt(accentColor.substr(4, 2), 16);
+        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+        var textColor = (yiq >= 128) ? 'dark' : 'light';
+
+        document.documentElement.className = `has-${textColor}-text`;
+    </script>
+
+    {# This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag #}
+    {# ghost_head #}
+
+</head>
+<body class="{% block body_class %}{% endblock body_class %} has-{% if design.title_font == "Elegant serif" %}serif{% elif design.title_font == "Consistent mono" %}mono{% else %}sans{% endif %}-title has-{% if design.body_font == "Elegant serif" %}serif{% else %}sans{% endif %}-body">
+
+<div class="gh-viewport">
+    
+    {% include "partials/components/navigation.html" %}
+
+    {% block body %}
+    {% endblock body %}
+    
+    {% include "partials/components/footer.html" %}
+    
+</div>
+
+{% block lightbox %}
+{% endblock lightbox %}
+
+{# Scripts - handle responsive videos, infinite scroll, and navigation dropdowns #}
+<script src="{{ get_url(path="js/source.js", cachebust=true) }}"></script>
+
+{# Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag #}
+{# ghost_foot #}
+
+</body>
+</html>

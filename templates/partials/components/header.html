@@ -1,0 +1,9 @@
+{% if design.header_style != "Off" %}
+
+    {% if design.header_style == "Highlight" %}
+        {% include "partials/components/header-content.html" %}
+    {% elif design.header_style == "Magazine" %}
+        {% include "partials/components/header-content.html" %}
+    {% endif %}
+
+{% endif %}
