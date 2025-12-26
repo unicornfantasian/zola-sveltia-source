@@ -1,0 +1,22 @@
+name = "Zola Sveltia Source"
+description = "Zola Sveltia Source is a Zola SSG project that uses Sveltia as its CMS and a ported version of the default Ghost CMS theme adapted for Zola & Sveltia."
+# An optional tags to allow quick search
+tags = ["Ghost", "News", "CMS"]
+license = "MIT"
+homepage = "https://github.com/unicornfantasian/zola-sveltia-source"
+# The minimum version of Zola required
+min_version = "0.1.0"
+# An optional live demo URL
+demo = "https://zola-sveltia-source.fantasian.workers.dev/"
+
+# The theme author info: you!
+[author]
+name = "Husen"
+homepage = "https://github.com/husenunicorn"
+
+# If this is porting a theme from another static site engine, provide
+# the info of the original author here
+[original]
+author =  "Ghost"
+homepage = "https://source.ghost.io/"
+repo = "https://github.com/TryGhost/Source"
