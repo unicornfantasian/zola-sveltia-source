@@ -29,6 +29,9 @@
             --background-color: {{ design.site_background_color }};
             --ghost-accent-color: {{ design.site_accent_color }};
         }
+        @view-transition {
+            navigation: auto;
+         }   
     </style>
 
     <script>
@@ -49,6 +52,20 @@
 
         document.documentElement.className = `has-${textColor}-text`;
     </script>
+    
+<script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "document",
+      "where": {
+        "and": [{ "href_matches": "/*", "relative_to": "document" }]
+      },
+      "eagerness": "eager"
+    }
+  ]
+}
+</script>    
 
     {# This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag #}
     {# ghost_head #}
