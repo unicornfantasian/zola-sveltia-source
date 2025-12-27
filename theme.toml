@@ -2,10 +2,10 @@ name = "Zola Sveltia Source"
 description = "Zola Sveltia Source is a Zola SSG project that uses Sveltia as its CMS and a ported version of the default Ghost CMS theme adapted for Zola & Sveltia."
 # An optional tags to allow quick search
 tags = ["Ghost", "News", "CMS"]
-license = "MIT"
+license = "WTFPL"
 homepage = "https://github.com/unicornfantasian/zola-sveltia-source"
 # The minimum version of Zola required
-min_version = "0.1.0"
+min_version = "0.21.0"
 # An optional live demo URL
 demo = "https://zola-sveltia-source.fantasian.workers.dev/"
 
