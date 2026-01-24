@@ -21,7 +21,11 @@ build_search_index = false
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = false
+
+
+# Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
+# For example, `...` into `…`, `"quote"` into `“curly”` etc
+smart_punctuation = true
 
 [extra]
 # Put all your custom variables here

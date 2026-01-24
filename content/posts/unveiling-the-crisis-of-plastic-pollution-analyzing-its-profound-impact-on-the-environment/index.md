@@ -3,6 +3,7 @@ title = "Unveiling the Crisis of Plastic Pollution: Analyzing Its Profound Impac
 description = "The world finds itself engulfed in a battle against plastic pollution, an environmental crisis that demands collective action. As plastic waste accumulates in landfills and oceans, the urgent need for solutions intensifies."
 date = "2025-12-26T20:56:00"
 updated = "2025-12-26T20:56:00"
+authors = ["Husen", "Zola"]
 
 [extra]
 feature_image = "1000070618.jpg"
