@@ -7,7 +7,7 @@
 {% block body %}
 
 <main class="gh-main">
-    {{ pl::post_list(posts=posts, feed="index", showTitle=true) }}
+    {{ <post_list posts={posts} feed="index" showTitle={true}/> }}
 </main>
 
 {% endblock body %}
