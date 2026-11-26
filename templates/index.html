@@ -15,6 +15,6 @@
 
 {# {{> "components/cta"}} #}
 
-{{ pl::post_list(posts=posts, feed="home", showTitle=true) }}
+{{ <post_list posts={posts} feed="home" showTitle={true}/> }}
 
 {% endblock body %}
