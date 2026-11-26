@@ -11,7 +11,7 @@
             </span>
             <nav class="gh-footer-menu">
                 {% if config.extra.navigation_secondary %}
-            {{ nav::navigation(data=config.extra.navigation_secondary, type="secondary") }}
+            {{ <navigation data={config.extra.navigation_secondary} type="secondary" /> }}
             {% endif %}
             </nav>
             <div class="gh-footer-copyright">
