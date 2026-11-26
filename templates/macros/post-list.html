@@ -1,4 +1,5 @@
-{% macro post_list(posts, feed="", showTitle=false) %}
+{% component post_list(posts, feed="", showTitle=false) %}
+{% set config = load_data(path="settings/config.toml") %}
 {% set design = load_data(path="settings/design.toml") %}
 {#
     Parameters:
@@ -26,16 +27,16 @@
                         {% if design.show_featured_posts %}
                             {% if posts.pages | length >= 4 %}
                                 
-                                    {% for page in posts.pages | slice(start=4, end=16) %}
-                                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                    {% for page in posts.pages[4:16] %}
+                                        {{ <post_card posts={page} lazyLoad={true}/> }}
                                     {% endfor %}
                                 
                             {% endif %}
                         {% else %}
                             {% if posts.pages | length >= 10 %}
                                 
-                                    {% for page in posts.pages | slice(start=10, end=22) %}
-                                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                    {% for page in posts.pages[10:22] %}
+                                        {{ <post_card posts={page} lazyLoad={true}/> }}
                                     {% endfor %}
                                 
                             {% endif %}
@@ -43,15 +44,15 @@
                     {% elif design.header_style == "Magazine" %}
                         {% if posts.pages | length >= 7 %}
                             
-                                {% for page in posts.pages | slice(start=7, end=19) %}
-                                    {{ pc::post_card(posts=page, lazyLoad=true) }}
+                                {% for page in posts.pages[7:19] %}
+                                    {{ <post_card posts={page} lazyLoad={true}/> }}
                                 {% endfor %}
                             
                         {% endif %}
                     {% else %}
                         
-                            {% for page in posts.pages | slice(end=12) %}
-                                {{ pc::post_card(posts=page, lazyLoad=true) }}
+                            {% for page in posts.pages[:12] %}
+                                {{ <post_card posts={page} lazyLoad={true}/> }}
                             {% endfor %}
                         
                     {% endif %}
@@ -60,8 +61,8 @@
                 {# All posts #}
                 {% if feed == "index" %}
                     
-                    {% for page in paginator.pages %}
-                        {{ pc::post_card(posts=page, lazyLoad=true) }}
+                    {% for page in posts.pages %}
+                        {{ <post_card posts={page} lazyLoad={true}/> }}
                     {% endfor %}
                 {% endif %}
 
@@ -76,10 +77,10 @@
 
             {% if feed == "home" %}
                 <div class="gh-more is-title">
-                    <a href="{{ config.base_url | safe }}/posts/">See all {% include "partials/icons/arrow.html" %}</a>
+                    <a href="/posts/">See all {% include "partials/icons/arrow.html" %}</a>
                 </div>
                 {% else %}
-                {% include "partials/pagination.html" %}
+                
             {% endif %}
         </main>
 
@@ -109,4 +110,4 @@
 
     </div>
 </section>
-{% endmacro post_list %}
+{% endcomponent post_list %}

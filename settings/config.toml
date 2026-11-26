@@ -1,0 +1,39 @@
+# The URL the site will be built for
+base_url = "https://zola-sveltia-source.fantasian.workers.dev"
+
+# Publication Language
+# Set the language/locale which is used on your site
+default_language = "en"
+
+# Title & description
+# Site title
+title = "Zola Sveltia Source"
+
+# Site description
+description = "Thoughts, stories and JAMstack"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = false
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+
+
+# Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
+# For example, `...` into `…`, `"quote"` into `“curly”` etc
+smart_punctuation = true
+
+[extra]
+# Put all your custom variables here
+navigation = [
+    { url = "/", label = "Home" },
+    { url = "/about/", label = "About" },
+]
+
+navigation_secondary = [
+    { url = "/", label = "Home" },
+]

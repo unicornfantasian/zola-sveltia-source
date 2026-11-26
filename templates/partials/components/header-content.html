@@ -7,13 +7,15 @@
         {# Highlight layout #}
         {% if design.header_style == "Highlight" %}
             <div class="gh-header-left">
-                {% for page in posts.pages | slice(end=1) %}
-                    {{ pc::post_card(posts=page, imageSizes="(max-width: 767px) calc(100vw - max(8vmin, 40px)), 640px", lazyLoad=false) }}
+                {% for page in posts.pages[:1] %}
+                    
+                    {{ <post_card posts={page} imageSizes="(max-width: 767px) calc(100vw - max(8vmin, 40px)), 640px" lazyLoad={false}/> }}
                 {% endfor %}
             </div>
             <div class="gh-header-middle">
-                {% for page in posts.pages | slice(start=1, end=4) %}
-                    {{ pc::post_card(posts=page) }}
+                {% for page in posts.pages[1:4] %}
+                    
+                    {{ <post_card posts={page} /> }}
                 {% endfor %}
             </div>
             <div class="gh-header-right">
@@ -21,8 +23,8 @@
                     {% include "partials/components/featured.html" %}
                 {% else %}
                     <div class="gh-featured-feed">
-                        {% for page in posts.pages | slice(start=4, end=10) %}
-                            {{ pc::post_card(posts=page, imageSizes="80px") }}
+                        {% for page in posts.pages[4:10] %}
+                            {{ <post_card posts={page} imageSizes="80px"/> }}
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -31,7 +33,7 @@
 
         {# Magazine layout #}
         {% if design.header_style == "Magazine" %}
-            {% for page in posts.pages | slice(end=7) %}
+            {% for page in posts.pages[:7] %}
                 {% if loop.index == 2 %}
                     <div class="gh-header-left">
                 {% endif %}
@@ -39,9 +41,10 @@
                     <div class="gh-header-right">
                 {% endif %}
                 {% if loop.first %}
-                    {{ pc::post_card(posts=page, imageSizes="640px") }}
+                    {{ <post_card posts={page} imageSizes="690px"/> }}
                 {% else %}
-                    {{ pc::post_card(posts=page) }}
+                    
+                    {{ <post_card posts={page} /> }}
                 {% endif %}
                 {% if loop.index == 4 %}
                     </div>

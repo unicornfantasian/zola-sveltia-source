@@ -18,7 +18,7 @@
 
         <nav class="gh-navigation-menu">
             {% if config.extra.navigation %}
-            {{ nav::navigation(data=config.extra.navigation) }}
+            {{ <navigation data={config.extra.navigation} /> }}
             {% endif %}
             
                 {# if design.navigation_layout == "Stacked" %}

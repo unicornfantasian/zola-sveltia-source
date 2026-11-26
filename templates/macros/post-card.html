@@ -1,4 +1,5 @@
-{% macro post_card(posts, imageSizes="", lazyLoad=false) %}
+{% component post_card(posts, imageSizes="", lazyLoad=false) %}
+{% set config = load_data(path="settings/config.toml") %}
 {% set design = load_data(path="settings/design.toml") %}
 {% set src = posts.colocated_path ~ posts.extra.feature_image %}
 {% set img_xs = resize_image(path=src, width=160, op="fit_width", format="webp", quality=80) %}
@@ -55,4 +56,4 @@
         </div>
     </a>
 </article>
-{% endmacro post_card %}
+{% endcomponent post_card %}

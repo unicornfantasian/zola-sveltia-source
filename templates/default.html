@@ -1,6 +1,4 @@
-{% import "macros/navigation.html" as nav %}
-{% import "macros/post-card.html" as pc %}
-{% import "macros/post-list.html" as pl %}
+{% set config = load_data(path="settings/config.toml") %} {# zola serve --extra-watch-path settings #}
 {% set design = load_data(path="settings/design.toml") %} {# zola serve --extra-watch-path settings #}
 {% set posts = get_section(path="posts/_index.md") %}
 
