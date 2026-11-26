@@ -23,7 +23,7 @@ collections:
       path: '{{slug}}/index'
       media_folder: ''
       public_folder: ''
-      thumbnail: '*.feature_image'
+      thumbnail: 'extra.feature_image'
       format: toml-frontmatter
       fields:
           - name: title
